@@ -20,17 +20,20 @@
       min-height: 100vh;
     }
 
+    /* ================= HEADER ================= */
+
     .header {
       background: linear-gradient(135deg, #123c8c, #1769d1);
       color: white;
-      padding: 28px 20px;
+      padding: 30px 20px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
     }
 
     .header h1 {
       font-size: 30px;
       margin-bottom: 8px;
+      font-weight: 700;
     }
 
     .header p {
@@ -38,27 +41,32 @@
       opacity: 0.95;
     }
 
+    /* ================= MAIN ================= */
+
     .container {
       width: min(1050px, 94%);
       margin: 30px auto;
     }
 
+    /* ================= SEARCH CARD ================= */
+
     .search-card {
       background: white;
-      padding: 28px;
+      padding: 30px;
       border-radius: 18px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       margin-bottom: 25px;
     }
 
     .search-card h2 {
-      margin-bottom: 8px;
       color: #123c8c;
+      margin-bottom: 8px;
+      font-size: 24px;
     }
 
     .search-card p {
       color: #667085;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .search-box {
@@ -73,11 +81,12 @@
       border-radius: 10px;
       font-size: 16px;
       outline: none;
+      transition: 0.2s;
     }
 
     .search-box input:focus {
       border-color: #1769d1;
-      box-shadow: 0 0 0 3px rgba(23,105,209,0.12);
+      box-shadow: 0 0 0 3px rgba(23, 105, 209, 0.12);
     }
 
     .search-box button {
@@ -89,11 +98,14 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .search-box button:hover {
       background: #123c8c;
     }
+
+    /* ================= MESSAGES ================= */
 
     .message {
       display: none;
@@ -114,6 +126,8 @@
       color: #c62828;
     }
 
+    /* ================= RESULT ================= */
+
     .result {
       display: none;
     }
@@ -122,7 +136,7 @@
       background: white;
       border-radius: 18px;
       padding: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       margin-bottom: 22px;
     }
 
@@ -138,6 +152,7 @@
 
     .student-title h2 {
       color: #123c8c;
+      font-size: 24px;
     }
 
     .status {
@@ -153,6 +168,8 @@
       background: #fff3e0;
       color: #c45b00;
     }
+
+    /* ================= STUDENT INFO ================= */
 
     .info-grid {
       display: grid;
@@ -177,11 +194,13 @@
       font-size: 15px;
     }
 
+    /* ================= TABLE ================= */
+
     .table-card {
       background: white;
       border-radius: 18px;
       padding: 25px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       margin-bottom: 22px;
       overflow-x: auto;
     }
@@ -189,6 +208,7 @@
     .table-card h3 {
       color: #123c8c;
       margin-bottom: 18px;
+      font-size: 20px;
     }
 
     table {
@@ -213,6 +233,8 @@
       border-bottom: none;
     }
 
+    /* ================= SUMMARY ================= */
+
     .summary {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -225,7 +247,7 @@
       padding: 20px;
       border-radius: 15px;
       text-align: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
     }
 
     .summary-card span {
@@ -239,6 +261,8 @@
       font-size: 24px;
       color: #123c8c;
     }
+
+    /* ================= ACTION BUTTONS ================= */
 
     .actions {
       display: flex;
@@ -266,12 +290,16 @@
       color: #123c8c;
     }
 
+    /* ================= FOOTER ================= */
+
     .footer {
       text-align: center;
       padding: 25px;
       color: #667085;
       font-size: 13px;
     }
+
+    /* ================= MOBILE ================= */
 
     @media (max-width: 700px) {
 
@@ -309,6 +337,8 @@
       }
     }
 
+    /* ================= PRINT ================= */
+
     @media print {
 
       body {
@@ -342,14 +372,23 @@
 
 <body>
 
+  <!-- ================= HEADER ================= -->
+
   <div class="header">
+
     <h1>A Bright Children's School, Lahar</h1>
-    <p>Annual Examination Result • Session 2026–27</p>
+
+    <p>
+      Annual Examination Result • Session 2026–27
+    </p>
+
   </div>
+
 
   <div class="container">
 
-    <!-- SEARCH -->
+    <!-- ================= SEARCH ================= -->
+
     <div class="search-card">
 
       <h2>🎓 Student Result Portal</h2>
@@ -382,21 +421,26 @@
     </div>
 
 
-    <!-- RESULT -->
+    <!-- ================= RESULT SECTION ================= -->
+
     <div id="resultSection" class="result">
 
-      <!-- STUDENT INFORMATION -->
+      <!-- STUDENT CARD -->
+
       <div class="student-card">
 
         <div class="student-title">
 
-          <h2 id="studentName">Student Name</h2>
+          <h2 id="studentName">
+            Student Name
+          </h2>
 
           <div id="status" class="status">
             PASS
           </div>
 
         </div>
+
 
         <div class="info-grid">
 
@@ -426,9 +470,12 @@
 
 
       <!-- SUBJECT TABLE -->
+
       <div class="table-card">
 
-        <h3>📚 Subject-wise Performance</h3>
+        <h3>
+          📚 Subject-wise Performance
+        </h3>
 
         <table>
 
@@ -451,32 +498,57 @@
 
 
       <!-- SUMMARY -->
+
       <div class="summary">
 
         <div class="summary-card">
+
           <span>Total Marks</span>
-          <strong id="totalMarks">0</strong>
+
+          <strong id="totalMarks">
+            0
+          </strong>
+
         </div>
 
+
         <div class="summary-card">
+
           <span>Maximum Marks</span>
-          <strong id="maximumMarks">0</strong>
+
+          <strong id="maximumMarks">
+            0
+          </strong>
+
         </div>
 
+
         <div class="summary-card">
+
           <span>Percentage</span>
-          <strong id="percentage">0%</strong>
+
+          <strong id="percentage">
+            0%
+          </strong>
+
         </div>
 
+
         <div class="summary-card">
+
           <span>Grade</span>
-          <strong id="grade">-</strong>
+
+          <strong id="grade">
+            -
+          </strong>
+
         </div>
 
       </div>
 
 
       <!-- ACTIONS -->
+
       <div class="actions">
 
         <button
@@ -500,10 +572,17 @@
   </div>
 
 
+  <!-- ================= FOOTER ================= -->
+
   <div class="footer">
-    © 2026 A Bright Children's School, Lahar • Result Portal
+
+    © 2026 A Bright Children's School, Lahar
+    • Result Portal
+
   </div>
 
+
+  <!-- ================= JAVASCRIPT ================= -->
 
   <script>
 
@@ -517,9 +596,14 @@
       "https://script.google.com/macros/s/AKfycbwKBTo8mxxeqiTTiNh28GEJkx7bTw3M3nWoJawFPikWW9s4NKmPXjYMwk8ervyz0J9ZEg/exec";
 
 
+    let activeScript = null;
+
+    let requestFinished = false;
+
+
     /*
      * =====================================================
-     * SEARCH RESULT USING JSONP
+     * SEARCH RESULT
      * =====================================================
      */
 
@@ -534,6 +618,15 @@
 
       hideMessages();
 
+
+      document.getElementById(
+        "resultSection"
+      ).style.display = "none";
+
+
+      /*
+       * Roll number empty
+       */
 
       if (!roll) {
 
@@ -551,50 +644,72 @@
       showLoading();
 
 
+      requestFinished = false;
+
+
       /*
-       * Unique callback name
+       * Remove old request
+       */
+
+      if (activeScript) {
+
+        activeScript.remove();
+
+        activeScript = null;
+
+      }
+
+
+      /*
+       * Unique JSONP callback
        */
 
       const callbackName =
-        "resultCallback_" +
+        "showResult_" +
         Date.now();
 
 
       /*
-       * JSONP callback
+       * JSONP callback function
        */
 
       window[callbackName] =
         function(result) {
 
+          if (requestFinished) {
+            return;
+          }
+
+
+          requestFinished = true;
+
+
           hideLoading();
-
-
-          /*
-           * Remove callback
-           */
-
-          delete window[callbackName];
 
 
           /*
            * Remove script
            */
 
-          const script =
-            document.getElementById(
-              callbackName
-            );
+          if (activeScript) {
 
-          if (script) {
+            activeScript.remove();
 
-            script.remove();
+            activeScript = null;
 
           }
 
 
           /*
-           * Handle result
+           * Remove callback
+
+           */
+
+          delete window[callbackName];
+
+
+          /*
+           * Check response
            */
 
           if (
@@ -603,16 +718,24 @@
           ) {
 
             showError(
+
               result &&
               result.message
+
                 ? result.message
+
                 : "Result not found."
+
             );
 
             return;
 
           }
 
+
+          /*
+           * Display result
+           */
 
           displayResult(
             result.data
@@ -622,47 +745,121 @@
 
 
       /*
-       * Create JSONP script
+       * Create script element
        */
 
-      const script =
-        document.createElement("script");
+      activeScript =
+        document.createElement(
+          "script"
+        );
 
 
-      script.id =
-        callbackName;
+      /*
+       * JSONP URL
+       */
 
-
-      script.src =
+      activeScript.src =
         API_URL +
         "?roll=" +
         encodeURIComponent(roll) +
         "&callback=" +
-        callbackName;
+        encodeURIComponent(callbackName) +
+        "&_=" +
+        Date.now();
+
+
+      activeScript.async =
+        true;
 
 
       /*
-       * Network / script error
+       * Connection error
        */
 
-      script.onerror =
+      activeScript.onerror =
         function() {
+
+          if (requestFinished) {
+            return;
+          }
+
+
+          requestFinished =
+            true;
+
 
           hideLoading();
 
-          delete window[callbackName];
 
-          script.remove();
+          if (activeScript) {
+
+            activeScript.remove();
+
+            activeScript = null;
+
+          }
+
+
+          delete window[
+            callbackName
+          ];
+
 
           showError(
-            "Unable to connect to the result server. Please try again."
+            "Unable to connect to result server. Please try again."
           );
 
         };
 
 
+      /*
+       * Send request
+       */
+
       document.body.appendChild(
-        script
+        activeScript
+      );
+
+
+      /*
+       * Timeout
+       */
+
+      setTimeout(
+        function() {
+
+          if (requestFinished) {
+            return;
+          }
+
+
+          requestFinished =
+            true;
+
+
+          hideLoading();
+
+
+          if (activeScript) {
+
+            activeScript.remove();
+
+            activeScript = null;
+
+          }
+
+
+          delete window[
+            callbackName
+          ];
+
+
+          showError(
+            "Server response नहीं मिला. Please try again."
+          );
+
+        },
+        15000
       );
 
     }
@@ -687,7 +884,7 @@
 
 
       /*
-       * Student details
+       * Student information
        */
 
       document.getElementById(
@@ -760,16 +957,22 @@
         );
 
 
-      tbody.innerHTML = "";
+      tbody.innerHTML =
+        "";
 
 
       if (
         data.subjects &&
-        data.subjects.length > 0
+        Array.isArray(
+          data.subjects
+        )
       ) {
 
         data.subjects.forEach(
-          function(subject, index) {
+          function(
+            subject,
+            index
+          ) {
 
             const row =
               document.createElement(
@@ -777,28 +980,73 @@
               );
 
 
-            row.innerHTML = `
-
-              <td>${index + 1}</td>
-
-              <td>
-                <strong>
-                  ${escapeHTML(subject.name)}
-                </strong>
-              </td>
-
-              <td>
-                ${subject.marks}
-              </td>
-
-              <td>
-                ${subject.maximum}
-              </td>
-
-            `;
+            const serialCell =
+              document.createElement(
+                "td"
+              );
 
 
-            tbody.appendChild(row);
+            serialCell.textContent =
+              index + 1;
+
+
+            const subjectCell =
+              document.createElement(
+                "td"
+              );
+
+
+            subjectCell.innerHTML =
+              "<strong>" +
+              escapeHTML(
+                subject.name
+              ) +
+              "</strong>";
+
+
+            const marksCell =
+              document.createElement(
+                "td"
+              );
+
+
+            marksCell.textContent =
+              subject.marks;
+
+
+            const maximumCell =
+              document.createElement(
+                "td"
+              );
+
+
+            maximumCell.textContent =
+              subject.maximum;
+
+
+            row.appendChild(
+              serialCell
+            );
+
+
+            row.appendChild(
+              subjectCell
+            );
+
+
+            row.appendChild(
+              marksCell
+            );
+
+
+            row.appendChild(
+              maximumCell
+            );
+
+
+            tbody.appendChild(
+              row
+            );
 
           }
         );
@@ -849,7 +1097,7 @@
 
     /*
      * =====================================================
-     * SEARCH ANOTHER
+     * SEARCH ANOTHER RESULT
      * =====================================================
      */
 
@@ -863,7 +1111,8 @@
 
       document.getElementById(
         "rollNumber"
-      ).value = "";
+      ).value =
+        "";
 
 
       hideMessages();
@@ -890,12 +1139,9 @@
 
     function showLoading() {
 
-      const loading =
-        document.getElementById(
-          "loadingMessage"
-        );
-
-      loading.style.display =
+      document.getElementById(
+        "loadingMessage"
+      ).style.display =
         "block";
 
     }
@@ -903,12 +1149,9 @@
 
     function hideLoading() {
 
-      const loading =
-        document.getElementById(
-          "loadingMessage"
-        );
-
-      loading.style.display =
+      document.getElementById(
+        "loadingMessage"
+      ).style.display =
         "none";
 
     }
@@ -920,7 +1163,9 @@
      * =====================================================
      */
 
-    function showError(message) {
+    function showError(
+      message
+    ) {
 
       const error =
         document.getElementById(
@@ -966,14 +1211,36 @@
      * =====================================================
      */
 
-    function escapeHTML(value) {
+    function escapeHTML(
+      value
+    ) {
 
       return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+          /&/g,
+          "&amp;"
+        )
+
+        .replace(
+          /</g,
+          "&lt;"
+        )
+
+        .replace(
+          />/g,
+          "&gt;"
+        )
+
+        .replace(
+          /"/g,
+          "&quot;"
+        )
+
+        .replace(
+          /'/g,
+          "&#039;"
+        );
 
     }
 
@@ -985,7 +1252,9 @@
      */
 
     document
-      .getElementById("rollNumber")
+      .getElementById(
+        "rollNumber"
+      )
       .addEventListener(
         "keydown",
         function(event) {
