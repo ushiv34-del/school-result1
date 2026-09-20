@@ -4,248 +4,290 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>A Bright Children's School - Result 2026-27</title>
+  <title>A Bright Children's School, Lahar | Result Portal</title>
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
       background: #f4f7fb;
       color: #172033;
       min-height: 100vh;
     }
 
     .header {
-      background: linear-gradient(135deg, #123b7a, #1769aa);
+      background: linear-gradient(135deg, #123c8c, #1769d1);
       color: white;
-      padding: 28px 18px;
+      padding: 28px 20px;
       text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.12);
     }
 
     .header h1 {
-      font-size: 27px;
-      margin-bottom: 7px;
+      font-size: 30px;
+      margin-bottom: 8px;
     }
 
     .header p {
       font-size: 15px;
-      opacity: .95;
+      opacity: 0.95;
     }
 
     .container {
-      width: min(1000px, 94%);
+      width: min(1050px, 94%);
       margin: 30px auto;
     }
 
-    .search-card,
-    .result-card {
+    .search-card {
       background: white;
+      padding: 28px;
       border-radius: 18px;
-      padding: 25px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
-      margin-bottom: 22px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
     }
 
     .search-card h2 {
       margin-bottom: 8px;
-      color: #123b7a;
+      color: #123c8c;
     }
 
     .search-card p {
-      color: #657085;
-      margin-bottom: 18px;
+      color: #667085;
+      margin-bottom: 20px;
     }
 
     .search-box {
       display: flex;
-      gap: 10px;
+      gap: 12px;
     }
 
-    input {
+    .search-box input {
       flex: 1;
-      padding: 14px 15px;
-      border: 1px solid #ccd5e2;
+      padding: 15px;
+      border: 1px solid #d0d5dd;
       border-radius: 10px;
       font-size: 16px;
       outline: none;
     }
 
-    input:focus {
-      border-color: #1769aa;
+    .search-box input:focus {
+      border-color: #1769d1;
+      box-shadow: 0 0 0 3px rgba(23,105,209,0.12);
     }
 
-    button {
+    .search-box button {
+      padding: 15px 25px;
       border: none;
       border-radius: 10px;
-      padding: 14px 22px;
-      background: #1769aa;
+      background: #1769d1;
       color: white;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #123b7a;
+    .search-box button:hover {
+      background: #123c8c;
     }
 
-    .error {
+    .message {
       display: none;
-      margin-top: 15px;
-      padding: 13px;
+      padding: 14px;
       border-radius: 10px;
-      background: #fff0f0;
-      color: #c62828;
+      margin-top: 18px;
+      text-align: center;
+      font-weight: 600;
     }
 
     .loading {
-      display: none;
-      text-align: center;
-      padding: 20px;
-      color: #1769aa;
-      font-weight: bold;
+      background: #eef5ff;
+      color: #1769d1;
     }
 
-    .student-header {
+    .error {
+      background: #fff1f1;
+      color: #c62828;
+    }
+
+    .result {
+      display: none;
+    }
+
+    .student-card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom: 22px;
+    }
+
+    .student-title {
       display: flex;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 25px;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .student-name {
-      font-size: 25px;
+    .student-title h2 {
+      color: #123c8c;
+    }
+
+    .status {
+      padding: 8px 15px;
+      border-radius: 30px;
+      background: #e8f7ed;
+      color: #16803c;
       font-weight: bold;
-      color: #123b7a;
+      font-size: 14px;
     }
 
-    .student-info {
+    .status.improve {
+      background: #fff3e0;
+      color: #c45b00;
+    }
+
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 25px;
+      gap: 15px;
     }
 
-    .info-box {
-      background: #f5f8fc;
-      padding: 13px;
+    .info-item {
+      background: #f8fafc;
       border-radius: 10px;
+      padding: 14px;
     }
 
-    .label {
+    .info-item span {
+      display: block;
       font-size: 12px;
-      color: #68758a;
-      margin-bottom: 4px;
+      color: #667085;
+      margin-bottom: 5px;
     }
 
-    .value {
-      font-weight: bold;
+    .info-item strong {
+      font-size: 15px;
     }
 
-    .table-wrap {
+    .table-card {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      margin-bottom: 22px;
       overflow-x: auto;
+    }
+
+    .table-card h3 {
+      color: #123c8c;
+      margin-bottom: 18px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
+      min-width: 500px;
     }
 
-    th {
-      background: #123b7a;
-      color: white;
+    th,
+    td {
       padding: 13px;
+      border-bottom: 1px solid #e5e7eb;
       text-align: left;
     }
 
-    td {
-      padding: 12px;
-      border-bottom: 1px solid #e5e9ef;
+    th {
+      background: #123c8c;
+      color: white;
     }
 
-    tr:nth-child(even) {
-      background: #f8fafc;
+    tr:last-child td {
+      border-bottom: none;
     }
 
     .summary {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 22px;
+      gap: 15px;
+      margin-bottom: 22px;
     }
 
-    .summary-box {
-      padding: 18px;
-      background: #f5f8fc;
-      border-radius: 12px;
+    .summary-card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
       text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     }
 
-    .summary-box strong {
+    .summary-card span {
       display: block;
-      font-size: 22px;
-      color: #123b7a;
-      margin-top: 5px;
+      color: #667085;
+      font-size: 13px;
+      margin-bottom: 8px;
     }
 
-    .status {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    .pass {
-      background: #e5f7ec;
-      color: #16803c;
-    }
-
-    .improve {
-      background: #fff0df;
-      color: #b65b00;
+    .summary-card strong {
+      font-size: 24px;
+      color: #123c8c;
     }
 
     .actions {
       display: flex;
-      gap: 10px;
-      margin-top: 22px;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 30px;
     }
 
-    .secondary {
-      background: #eef2f7;
-      color: #172033;
+    .actions button {
+      padding: 13px 22px;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
     }
 
-    .secondary:hover {
-      background: #dfe6ef;
+    .print-btn {
+      background: #123c8c;
+      color: white;
+    }
+
+    .new-btn {
+      background: #e9eef7;
+      color: #123c8c;
     }
 
     .footer {
       text-align: center;
       padding: 25px;
-      color: #68758a;
+      color: #667085;
       font-size: 13px;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
 
       .header h1 {
-        font-size: 22px;
+        font-size: 23px;
       }
 
       .search-box {
         flex-direction: column;
       }
 
-      .student-info {
+      .search-box button {
+        width: 100%;
+      }
+
+      .info-grid {
         grid-template-columns: 1fr;
       }
 
@@ -253,9 +295,17 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .search-card,
-      .result-card {
-        padding: 18px;
+      .student-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions button {
+        width: 100%;
       }
     }
 
@@ -271,14 +321,20 @@
         display: none !important;
       }
 
-      .result-card {
+      .container {
+        width: 100%;
+        margin: 0;
+      }
+
+      .student-card,
+      .table-card,
+      .summary-card {
         box-shadow: none;
         border: 1px solid #ddd;
       }
 
-      .container {
-        width: 100%;
-        margin: 0;
+      .header {
+        box-shadow: none;
       }
     }
   </style>
@@ -286,16 +342,17 @@
 
 <body>
 
-  <header class="header">
+  <div class="header">
     <h1>A Bright Children's School, Lahar</h1>
-    <p>Annual Examination Result — Session 2026–27</p>
-  </header>
+    <p>Annual Examination Result • Session 2026–27</p>
+  </div>
 
-  <main class="container">
+  <div class="container">
 
-    <section class="search-card">
+    <!-- SEARCH -->
+    <div class="search-card">
 
-      <h2>Check Your Result</h2>
+      <h2>🎓 Student Result Portal</h2>
 
       <p>
         Enter your Roll Number to view your examination result.
@@ -304,365 +361,628 @@
       <div class="search-box">
 
         <input
-          id="rollNumber"
           type="text"
+          id="rollNumber"
           placeholder="Enter Roll Number"
           autocomplete="off"
         >
 
         <button onclick="searchResult()">
-          Search Result
+          View Result
         </button>
 
       </div>
 
-      <div id="error" class="error"></div>
-
-      <div id="loading" class="loading">
-        Searching result...
+      <div id="loadingMessage" class="message loading">
+        ⏳ Searching result...
       </div>
 
-    </section>
+      <div id="errorMessage" class="message error"></div>
+
+    </div>
 
 
-    <section
-      id="resultSection"
-      class="result-card"
-      style="display:none;"
-    >
+    <!-- RESULT -->
+    <div id="resultSection" class="result">
 
-      <div class="student-header">
+      <!-- STUDENT INFORMATION -->
+      <div class="student-card">
 
-        <div>
-          <div class="label">Student Name</div>
-          <div id="studentName" class="student-name"></div>
+        <div class="student-title">
+
+          <h2 id="studentName">Student Name</h2>
+
+          <div id="status" class="status">
+            PASS
+          </div>
+
         </div>
 
-        <div id="status"></div>
+        <div class="info-grid">
+
+          <div class="info-item">
+            <span>Roll Number</span>
+            <strong id="studentRoll">-</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Date of Birth</span>
+            <strong id="studentDob">-</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Father's Name</span>
+            <strong id="fatherName">-</strong>
+          </div>
+
+          <div class="info-item">
+            <span>Mother's Name</span>
+            <strong id="motherName">-</strong>
+          </div>
+
+        </div>
 
       </div>
 
 
-      <div class="student-info">
+      <!-- SUBJECT TABLE -->
+      <div class="table-card">
 
-        <div class="info-box">
-          <div class="label">Roll Number</div>
-          <div id="studentRoll" class="value"></div>
-        </div>
-
-        <div class="info-box">
-          <div class="label">Date of Birth</div>
-          <div id="studentDob" class="value"></div>
-        </div>
-
-        <div class="info-box">
-          <div class="label">Father's Name</div>
-          <div id="studentFather" class="value"></div>
-        </div>
-
-        <div class="info-box">
-          <div class="label">Mother's Name</div>
-          <div id="studentMother" class="value"></div>
-        </div>
-
-      </div>
-
-
-      <h3>Subject-wise Performance</h3>
-
-      <div class="table-wrap">
+        <h3>📚 Subject-wise Performance</h3>
 
         <table>
 
           <thead>
+
             <tr>
+              <th>S.No.</th>
               <th>Subject</th>
               <th>Marks Obtained</th>
               <th>Maximum Marks</th>
             </tr>
+
           </thead>
 
-          <tbody id="subjectTable"></tbody>
+          <tbody id="subjectTableBody"></tbody>
 
         </table>
 
       </div>
 
 
+      <!-- SUMMARY -->
       <div class="summary">
 
-        <div class="summary-box">
-          Total
-          <strong id="total"></strong>
+        <div class="summary-card">
+          <span>Total Marks</span>
+          <strong id="totalMarks">0</strong>
         </div>
 
-        <div class="summary-box">
-          Maximum
-          <strong id="maximum"></strong>
+        <div class="summary-card">
+          <span>Maximum Marks</span>
+          <strong id="maximumMarks">0</strong>
         </div>
 
-        <div class="summary-box">
-          Percentage
-          <strong id="percentage"></strong>
+        <div class="summary-card">
+          <span>Percentage</span>
+          <strong id="percentage">0%</strong>
         </div>
 
-        <div class="summary-box">
-          Grade
-          <strong id="grade"></strong>
+        <div class="summary-card">
+          <span>Grade</span>
+          <strong id="grade">-</strong>
         </div>
 
       </div>
 
 
+      <!-- ACTIONS -->
       <div class="actions">
 
-        <button onclick="window.print()">
-          Print / Save PDF
+        <button
+          class="print-btn"
+          onclick="window.print()"
+        >
+          🖨️ Print / Save PDF
         </button>
 
         <button
-          class="secondary"
-          onclick="newSearch()"
+          class="new-btn"
+          onclick="searchAnother()"
         >
-          Search Another
+          🔍 Search Another Result
         </button>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </div>
 
 
-  <footer class="footer">
-    © 2026 A Bright Children's School, Lahar
-  </footer>
+  <div class="footer">
+    © 2026 A Bright Children's School, Lahar • Result Portal
+  </div>
 
 
   <script>
+
+    /*
+     * =====================================================
+     * GOOGLE APPS SCRIPT API
+     * =====================================================
+     */
 
     const API_URL =
       "https://script.google.com/macros/s/AKfycbwKBTo8mxxeqiTTiNh28GEJkx7bTw3M3nWoJawFPikWW9s4NKmPXjYMwk8ervyz0J9ZEg/exec";
 
 
-    async function searchResult() {
+    /*
+     * =====================================================
+     * SEARCH RESULT USING JSONP
+     * =====================================================
+     */
+
+    function searchResult() {
+
+      const rollInput =
+        document.getElementById("rollNumber");
 
       const roll =
-        document
-          .getElementById("rollNumber")
-          .value
-          .trim();
+        rollInput.value.trim();
 
 
-      const error =
-        document.getElementById("error");
-
-      const loading =
-        document.getElementById("loading");
-
-      const resultSection =
-        document.getElementById("resultSection");
-
-
-      error.style.display = "none";
+      hideMessages();
 
 
       if (!roll) {
 
-        error.textContent =
-          "Please enter your Roll Number.";
+        showError(
+          "Please enter your Roll Number."
+        );
 
-        error.style.display = "block";
+        rollInput.focus();
 
         return;
 
       }
 
 
-      loading.style.display = "block";
-
-      resultSection.style.display = "none";
+      showLoading();
 
 
-      try {
+      /*
+       * Unique callback name
+       */
 
-        const response =
-          await fetch(
-            API_URL +
-            "?roll=" +
-            encodeURIComponent(roll)
+      const callbackName =
+        "resultCallback_" +
+        Date.now();
+
+
+      /*
+       * JSONP callback
+       */
+
+      window[callbackName] =
+        function(result) {
+
+          hideLoading();
+
+
+          /*
+           * Remove callback
+           */
+
+          delete window[callbackName];
+
+
+          /*
+           * Remove script
+           */
+
+          const script =
+            document.getElementById(
+              callbackName
+            );
+
+          if (script) {
+
+            script.remove();
+
+          }
+
+
+          /*
+           * Handle result
+           */
+
+          if (
+            !result ||
+            result.success !== true
+          ) {
+
+            showError(
+              result &&
+              result.message
+                ? result.message
+                : "Result not found."
+            );
+
+            return;
+
+          }
+
+
+          displayResult(
+            result.data
           );
 
+        };
 
-        if (!response.ok) {
 
-          throw new Error(
-            "Network response failed."
+      /*
+       * Create JSONP script
+       */
+
+      const script =
+        document.createElement("script");
+
+
+      script.id =
+        callbackName;
+
+
+      script.src =
+        API_URL +
+        "?roll=" +
+        encodeURIComponent(roll) +
+        "&callback=" +
+        callbackName;
+
+
+      /*
+       * Network / script error
+       */
+
+      script.onerror =
+        function() {
+
+          hideLoading();
+
+          delete window[callbackName];
+
+          script.remove();
+
+          showError(
+            "Unable to connect to the result server. Please try again."
           );
 
-        }
+        };
 
 
-        const result =
-          await response.json();
-
-
-        if (!result.success) {
-
-          throw new Error(
-            result.message ||
-            "Result not found."
-          );
-
-        }
-
-
-        displayResult(result.data);
-
-
-      }
-
-      catch (err) {
-
-        error.textContent =
-          err.message ||
-          "Unable to load result.";
-
-        error.style.display = "block";
-
-      }
-
-      finally {
-
-        loading.style.display = "none";
-
-      }
+      document.body.appendChild(
+        script
+      );
 
     }
 
+
+    /*
+     * =====================================================
+     * DISPLAY RESULT
+     * =====================================================
+     */
 
     function displayResult(data) {
 
-      document.getElementById("studentName")
-        .textContent = data.name || "-";
-
-      document.getElementById("studentRoll")
-        .textContent = data.roll || "-";
-
-      document.getElementById("studentFather")
-        .textContent = data.father || "-";
-
-      document.getElementById("studentMother")
-        .textContent = data.mother || "-";
-
-      document.getElementById("studentDob")
-        .textContent = data.dob || "-";
-
-
-      const table =
-        document.getElementById("subjectTable");
-
-      table.innerHTML = "";
-
-
-      data.subjects.forEach(subject => {
-
-        const row =
-          document.createElement("tr");
-
-
-        row.innerHTML = `
-
-          <td>${escapeHtml(subject.name)}</td>
-
-          <td>${subject.marks}</td>
-
-          <td>${subject.maximum}</td>
-
-        `;
-
-
-        table.appendChild(row);
-
-      });
-
-
-      document.getElementById("total")
-        .textContent = data.total;
-
-      document.getElementById("maximum")
-        .textContent = data.maximum;
-
-      document.getElementById("percentage")
-        .textContent = data.percentage + "%";
-
-      document.getElementById("grade")
-        .textContent = data.grade;
-
-
-      const status =
-        document.getElementById("status");
-
-
-      status.textContent =
-        data.status;
-
-
-      status.className =
-        "status " +
-        (
-          data.status === "PASS"
-            ? "pass"
-            : "improve"
+      const resultSection =
+        document.getElementById(
+          "resultSection"
         );
 
 
-      document.getElementById("resultSection")
-        .style.display = "block";
+      resultSection.style.display =
+        "block";
 
 
-      document.getElementById("resultSection")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
+      /*
+       * Student details
+       */
+
+      document.getElementById(
+        "studentName"
+      ).textContent =
+        data.name || "-";
+
+
+      document.getElementById(
+        "studentRoll"
+      ).textContent =
+        data.roll || "-";
+
+
+      document.getElementById(
+        "studentDob"
+      ).textContent =
+        data.dob || "-";
+
+
+      document.getElementById(
+        "fatherName"
+      ).textContent =
+        data.father || "-";
+
+
+      document.getElementById(
+        "motherName"
+      ).textContent =
+        data.mother || "-";
+
+
+      /*
+       * Status
+       */
+
+      const status =
+        document.getElementById(
+          "status"
+        );
+
+
+      status.textContent =
+        data.status || "-";
+
+
+      status.classList.remove(
+        "improve"
+      );
+
+
+      if (
+        data.status !== "PASS"
+      ) {
+
+        status.classList.add(
+          "improve"
+        );
+
+      }
+
+
+      /*
+       * Subject table
+       */
+
+      const tbody =
+        document.getElementById(
+          "subjectTableBody"
+        );
+
+
+      tbody.innerHTML = "";
+
+
+      if (
+        data.subjects &&
+        data.subjects.length > 0
+      ) {
+
+        data.subjects.forEach(
+          function(subject, index) {
+
+            const row =
+              document.createElement(
+                "tr"
+              );
+
+
+            row.innerHTML = `
+
+              <td>${index + 1}</td>
+
+              <td>
+                <strong>
+                  ${escapeHTML(subject.name)}
+                </strong>
+              </td>
+
+              <td>
+                ${subject.marks}
+              </td>
+
+              <td>
+                ${subject.maximum}
+              </td>
+
+            `;
+
+
+            tbody.appendChild(row);
+
+          }
+        );
+
+      }
+
+
+      /*
+       * Summary
+       */
+
+      document.getElementById(
+        "totalMarks"
+      ).textContent =
+        data.total ?? 0;
+
+
+      document.getElementById(
+        "maximumMarks"
+      ).textContent =
+        data.maximum ?? 0;
+
+
+      document.getElementById(
+        "percentage"
+      ).textContent =
+        (data.percentage ?? "0") +
+        "%";
+
+
+      document.getElementById(
+        "grade"
+      ).textContent =
+        data.grade || "-";
+
+
+      /*
+       * Scroll to result
+       */
+
+      resultSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
 
     }
 
 
-    function newSearch() {
+    /*
+     * =====================================================
+     * SEARCH ANOTHER
+     * =====================================================
+     */
 
-      document.getElementById("rollNumber")
-        .value = "";
+    function searchAnother() {
 
-      document.getElementById("resultSection")
-        .style.display = "none";
+      document.getElementById(
+        "resultSection"
+      ).style.display =
+        "none";
 
-      document.getElementById("error")
-        .style.display = "none";
 
-      document.getElementById("rollNumber")
-        .focus();
+      document.getElementById(
+        "rollNumber"
+      ).value = "";
+
+
+      hideMessages();
+
 
       window.scrollTo({
         top: 0,
         behavior: "smooth"
       });
 
-    }
 
-
-    function escapeHtml(value) {
-
-      const div =
-        document.createElement("div");
-
-      div.textContent =
-        value;
-
-      return div.innerHTML;
+      document.getElementById(
+        "rollNumber"
+      ).focus();
 
     }
 
+
+    /*
+     * =====================================================
+     * LOADING
+     * =====================================================
+     */
+
+    function showLoading() {
+
+      const loading =
+        document.getElementById(
+          "loadingMessage"
+        );
+
+      loading.style.display =
+        "block";
+
+    }
+
+
+    function hideLoading() {
+
+      const loading =
+        document.getElementById(
+          "loadingMessage"
+        );
+
+      loading.style.display =
+        "none";
+
+    }
+
+
+    /*
+     * =====================================================
+     * ERROR
+     * =====================================================
+     */
+
+    function showError(message) {
+
+      const error =
+        document.getElementById(
+          "errorMessage"
+        );
+
+
+      error.textContent =
+        "❌ " + message;
+
+
+      error.style.display =
+        "block";
+
+    }
+
+
+    /*
+     * =====================================================
+     * HIDE MESSAGES
+     * =====================================================
+     */
+
+    function hideMessages() {
+
+      document.getElementById(
+        "errorMessage"
+      ).style.display =
+        "none";
+
+
+      document.getElementById(
+        "loadingMessage"
+      ).style.display =
+        "none";
+
+    }
+
+
+    /*
+     * =====================================================
+     * HTML SECURITY
+     * =====================================================
+     */
+
+    function escapeHTML(value) {
+
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /*
+     * =====================================================
+     * ENTER KEY SUPPORT
+     * =====================================================
+     */
 
     document
       .getElementById("rollNumber")
@@ -670,7 +990,9 @@
         "keydown",
         function(event) {
 
-          if (event.key === "Enter") {
+          if (
+            event.key === "Enter"
+          ) {
 
             searchResult();
 
